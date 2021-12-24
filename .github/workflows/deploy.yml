@@ -1,0 +1,45 @@
+name: Deploy Site
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+     - '**.ftd'
+  
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install fpm
+        id: install_fpm
+        continue-on-error: false
+        uses: actions-rs/cargo@v1
+        with:
+            command: install
+            args: fpm
+      - name: Build the pages with fpm
+        id: build
+        continue-on-error: false
+        run: fpm build
+      - name: Move the build directory
+        id: move
+        continue-on-error: false
+        run: mv .build docs
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        name: Commit changes to build branch
+        with:
+          commit_message: SSR build
+          branch: build
+          commit_options: '--no-verify --signoff'
+          file_pattern: docs/*
+          repository: .
+          commit_user_name: FPM Deploy Bot
+          commit_user_email: fpm-deploy-bot@fifthtry.com
+          commit_author: FPM Bot <fpm-deploy-bot@fifthtry.com> # defaults to author of the commit that triggered the run
