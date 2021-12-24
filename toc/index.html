@@ -2,19 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>ftd</title>
     <script type="ftd" id="ftd-data">
         {
-  "fifthtry/blog-theme#copyright-text": {
-    "value": "© 2021 FPM Blog - Latest FPM News & Updates",
+  "fifthtry/fpm-book#accent": {
+    "value": "#0D1F2D",
     "dependencies": {}
   },
-  "fifthtry/blog-theme#site-logo": {
-    "value": "https://res.cloudinary.com/dphj6havg/image/upload/v1638644344/Group_551_gqhmnl.svg",
+  "fifthtry/fpm-book#base_size": {
+    "value": "18",
     "dependencies": {}
   },
-  "fifthtry/blog-theme#site-name": {
-    "value": "Sourabh's blog",
+  "fifthtry/fpm-book#error": {
+    "value": "c",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#heading_size": {
+    "value": "28",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#informational": {
+    "value": "c",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#main": {
+    "value": "#fff",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#primary": {
+    "value": "#F79489",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#primary-100": {
+    "value": "#F9F1F0",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#primary-300": {
+    "value": "#FADCD9",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#primary-500": {
+    "value": "#F8AFA6",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#secondary-100": {
+    "value": "c",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#secondary-300": {
+    "value": "c",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#secondary-400": {
+    "value": "c",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#secondary-500": {
+    "value": "c",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#secondary-700": {
+    "value": "#4C555A",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#secondary-900": {
+    "value": "#384248",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#separator": {
+    "value": "#eee",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#sub_heading_size": {
+    "value": "22",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#success": {
+    "value": "c",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#title_size": {
+    "value": "36",
+    "dependencies": {}
+  },
+  "fifthtry/fpm-book#warning": {
+    "value": "c",
     "dependencies": {}
   }
 }
@@ -365,6 +438,9 @@ window.ftd = (function () {
         } else if (act === "toggle") {
             let target = action["target"];
             exports.set_bool(id, target, data[target].value !== 'true');
+        } else if (act === "message-host") {
+            let target = action["target"].trim();
+            window[target]();
         } else if (act === "increment") {
             let target = action["target"];
             let increment = 1;
