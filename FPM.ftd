@@ -1,6 +1,6 @@
 -- import: fpm
 
--- fpm.package: musical_octo_enigma
+-- fpm.package: musical-octo-enigma
 
--- fpm.dependency: fifthtry/blog-theme
+-- fpm.dependency: fifthtry/fpm-book
 repo: github
