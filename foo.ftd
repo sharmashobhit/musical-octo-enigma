@@ -1,0 +1,58 @@
+-- record repo:
+string full_name:
+string description:
+string html_url:
+integer stargazers_count:
+integer watchers_count:
+
+-- record result:
+integer total_count:
+repo list items:
+
+-- result r:
+total_count: 0
+
+-- r:
+$processor$: http
+url: https://api.github.com/search/repositories
+method: GET
+sort: stars
+order: desc
+q: language:python
+
+
+-- ftd.row:
+
+--- ftd.text: Count:
+--- ftd.integer:
+value: $r.total_count
+
+-- ftd.column:
+spacing: 20
+width: fill
+padding: 20
+
+-- show-repo:
+o: $o
+$loop$: $r.items as $o
+
+-- ftd.column show-repo:
+repo o:
+padding: 20
+width: fill
+border-radius: 5
+border-width: 4
+
+--- ftd.text:
+link: $o.html_url
+
+$o.full_name
+
+--- ftd.row:
+spacing: 10
+
+--- ftd.text:
+
+Stars:
+
+--- ftd.integer: $o.stargazers_count
