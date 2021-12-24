@@ -574,6 +574,18 @@ toc-item toc:
 --- toc-instance:
 toc: $toc
 
+-- ftd.column ft_header:
+width: fill
+padding-left: 30
+padding-right: 30
+padding-top: 19
+padding-bottom: 19
+toc-item list tocs: 
+
+--- header-link:
+$loop$: $tocs as $obj
+toc: $obj
+
 -- ftd.column page:
 width: fill
 open: main-container
@@ -586,9 +598,8 @@ id: main-row
 width: 300
 height: fill
 
---- header-link:
-$loop$: $toc as $obj
-toc: $obj
+--- ft_header:
+tocs: $toc
 
 --- container: main-row
 
