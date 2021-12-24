@@ -1,4 +1,3 @@
-# fpm-blog
+# Rust book port in ftd using fpm
 
-This template allows you to get started with a [FPM](https://fpm.dev) powered blog.
-
+Porting rust book from mdbook to `fpm`
